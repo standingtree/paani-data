@@ -6,8 +6,12 @@ app = Dash(__name__)
 
 
 # load long-form dataframe
-# df = pd.DataFrame(r'C:\Users\viren\Documents\___UChicago MSFM\water index\_consolidated data')
-# print(df)
+dataFilepath = 'C:/Users/viren/Documents/___UChicago MSFM/water index/_consolidated data'
+
+# pricing data
+
+# city
+city = 'Delhi'
 
 df = pd.DataFrame({
     'Fruit': ['apples', 'oranges', 'bananas', 'apples', 'oranges', 'bananas'],
