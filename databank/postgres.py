@@ -1,21 +1,17 @@
-import psycopg2 as ps
+import os
+import psycopg2
+from dotenv import load_dotenv
 
-# postgres credentials
-credentials = {
-    'host': '', # endpoint
-    'port': '', # port
-    'username': 'VelesIndiaAdmin',
-    'password': 'VelesIndia0815!',
-    'database_name': 'veles-india-db1'
-}
+load_dotenv()  # Required to load the previously defined environment variables
 
-# create connection and cursor
-conn = ps.connect(host=credentials['host'],
-                  database=credentials['database_name'],
-                  user=credentials['username'],
-                  password=credentials['password'],
-                  port=credentials['port']
-                  )
+# Create connection to postgres
+connection = psycopg2.connect(host=os.environ.get('PG_HOST'),
+                        port=os.environ.get('PG_PORT'),
+                        user=os.environ.get('PG_USER'),
+                        password=os.environ.get('PG_PASSWORD'),
+                        dbname=os.environ.get('PG_DATABASE'))
 
-
-cur = conn.cursor()
+connection.autocommit = True  # Ensure data is added to the database immediately after write commands
+cursor = connection.cursor()
+cursor.execute('SELECT %s as connected;', ('Connection to postgres  successful!',))
+print(cursor.fetchone())
