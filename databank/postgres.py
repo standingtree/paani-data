@@ -31,7 +31,7 @@ cursor.execute(createTableQuery)
 
 # add data to the table
 addDataQuery = 'INSERT INTO my_table(name) VALUES(%s);'
-yourName = sys.argv[1] if len(sys.argv) > 1 else "viren"
+yourName = sys.argv[1] if len(sys.argv) > 1 else "BigDummy"
 cursor.execute(addDataQuery, (yourName,))
 
 # read data from database
@@ -45,7 +45,7 @@ for record in cursor.fetchall():
 deleteRecord = 'DELETE FROM my_table WHERE id=1;'
 cursor.execute(deleteRecord)
 readDataQuery = 'SELECT * FROM my_table WHERE name=%s;'
-cursor.execute(readDataQuery, ('viren',))
+cursor.execute(readDataQuery, (yourName,))
 for record in cursor.fetchall():
     print(record)
 
