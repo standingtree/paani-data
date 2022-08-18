@@ -13,6 +13,10 @@ dataFilepath = 'C:/Users/viren/Documents/___UChicago MSFM/water index/_consolida
 # city
 city = 'Delhi'
 
+chartData = pd.read_excel(dataFilepath+'/consolidated_prices.xlsx')
+
+# filter for city and price type 
+
 df = pd.DataFrame({
     'Fruit': ['apples', 'oranges', 'bananas', 'apples', 'oranges', 'bananas'],
     'Amount':[10, 11,35,61,1,3],
