@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "veles-india"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "veles_india"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^1.5.0"
+sqlalchemy = "^1.4.41"
+jupyterlab = "^3.4.8"
+psycopg2-binary = "^2.9.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
