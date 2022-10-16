@@ -1,17 +1,16 @@
 [tool.poetry]
 name = "veles-india"
 version = "0.1.0"
-description = ""
+description = "water_everywhere"
 authors = ["Your Name <you@example.com>"]
+license = "n"
 readme = "README.md"
 packages = [{include = "veles_india"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 pandas = "^1.5.0"
-sqlalchemy = "^1.4.41"
-jupyterlab = "^3.4.8"
-psycopg2-binary = "^2.9.4"
+SQLAlchemy = "^1.4.42"
 
 
 [build-system]
