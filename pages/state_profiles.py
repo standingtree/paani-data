@@ -1,7 +1,7 @@
 # Import necessary libraries
 from dash import dcc, html
 import dash_bootstrap_components as dbc
-from data_feed import datahelpers as dh
+from datahelpers import data_feed as dh
 
 stateSelector = [
         html.Hr(),

@@ -7,7 +7,7 @@ import dash_bootstrap_components as dbc
 # Connect to app pages
 from pages import state_profiles, page2
 # Connect data feed
-from data_feed import datahelpers as dh
+from datahelpers import data_feed
 # Connect components
 from components import navbar
 from components.maps import all_states_geojson
@@ -74,9 +74,9 @@ def update_state_map(selected_state):
 def update_hydrology(selected_state):
     # filtered rainfall data
     try:
-        filtered_rf_data = dh.rf_data.loc[:, selected_state.upper()]
+        filtered_rf_data = data_feed.rf_data.loc[:, selected_state.upper()]
     except KeyError:
-        filtered_rf_data = pd.DataFrame(index=dh.rf_data.index)
+        filtered_rf_data = pd.DataFrame(index=data_feed.rf_data.index)
 
     rf_fig = px.line(filtered_rf_data)
     rf_fig.update_layout(
@@ -87,9 +87,9 @@ def update_hydrology(selected_state):
     )
 
     try:
-        filtered_gw_data = -dh.gw_data.loc[:, selected_state.upper()].ffill()
+        filtered_gw_data = -data_feed.gw_data.loc[:, selected_state.upper()].ffill()
     except KeyError:
-        filtered_gw_data = pd.DataFrame(index=dh.gw_data.index)
+        filtered_gw_data = pd.DataFrame(index=data_feed.gw_data.index)
     gw_fig = px.line(filtered_gw_data)
     gw_fig.update_layout(
         transition_duration=100,
@@ -99,9 +99,9 @@ def update_hydrology(selected_state):
     )
 
     try:
-        filtered_res_data = dh.res_data.loc[:, selected_state.upper()]
+        filtered_res_data = data_feed.res_data.loc[:, selected_state.upper()]
     except KeyError:
-        filtered_res_data = pd.DataFrame(index=dh.res_data.index)
+        filtered_res_data = pd.DataFrame(index=data_feed.res_data.index)
     res_fig = px.line(filtered_res_data)
     res_fig.update_layout(
         transition_duration=100,
@@ -129,7 +129,7 @@ def store_chosen_state(selected_state):
 def update_cities(selected_state):
     # cities in selected state for which price data is available
     print(selected_state)
-    cities = dh.price_data[dh.price_data['State'] == dh.code_for_state[selected_state]]['City'].unique()
+    cities = data_feed.price_data[data_feed.price_data['State'] == data_feed.code_for_state[selected_state]]['City'].unique()
     print(cities)
     try:
         city = cities[0]
@@ -145,14 +145,14 @@ def update_cities(selected_state):
 def update_prices(selected_city):
     # filtered price data
     if selected_city is not None:
-        filtered_price_data = dh.price_data[dh.price_data['City'] == selected_city][[
+        filtered_price_data = data_feed.price_data[data_feed.price_data['City'] == selected_city][[
             'City',
             'Price SubType',
             'Monthly Consumption (kL)',
             'Volumetric Rate - USD/acre-ft']
         ]
     else:
-        filtered_price_data = dh.price_data[dh.price_data['City'] == 'NA'][[
+        filtered_price_data = data_feed.price_data[data_feed.price_data['City'] == 'NA'][[
             'City',
             'Price SubType',
             'Monthly Consumption (kL)',
