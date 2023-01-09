@@ -1,2 +1,2 @@
 # Paani Data
-A curated view of the Indian water industry. 
+A curation of public data on the Indian water industry. 
