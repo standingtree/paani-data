@@ -4,7 +4,7 @@ import pandas as pd
 # ------------------------------------------------------------------------------------------------------------ #
 
 # load long-form dataframe
-dataFilepath = 'C:/Users/viren/Documents/___UChicago MSFM/water index'
+dataFilepath = 'C:/Users/viren/Documents/_MSFM/water index'
 
 # rainfall data
 rf_data = pd.read_excel(dataFilepath + r'/_consolidated data/actual_rf_all_states.xlsx', index_col=0)

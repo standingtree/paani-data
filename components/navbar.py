@@ -8,9 +8,9 @@ def Navbar():
                 dbc.NavItem(dbc.NavLink("State Profiles", href="/state_profiles")),
                 dbc.NavItem(dbc.NavLink("Page 2", href="/page2")),
             ],
-            brand="Veles India | Water Data",
+            brand="Paani Data",
             brand_href="/state_profiles",
-            color="dark",
+            color="rgb(13, 43, 133)",
             dark=True,
         ),
     ])
